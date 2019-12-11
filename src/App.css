@@ -1,38 +1,88 @@
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 2.4rem;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.notepad {
+  background: yellow;
+  border: 1px solid blue;
+  padding: 1.5rem;
+  width: 350px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+button {
+  cursor: pointer;
+  background: transparent;
+}
+
+button.add {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: green;
+}
+
+button.clear {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.check {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: red;
+  margin-right: 10px;
+}
+
+input {
+  border-bottom: 2px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-color: green;
+  background: transparent;
+  padding: 3px;
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+  width: 250px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.6rem;
+}
+
+.item {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.completed .text {
+  text-decoration: line-through;
+  color: darkgrey;
+}
+
+.completed .check {
+  text-decoration: none;
+  color: darkgrey;
 }

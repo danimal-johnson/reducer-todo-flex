@@ -12,11 +12,14 @@ const TodoList = () => {
   }
 
   const saveTodo = () => {
-    dispatch({ type: c.ADD_TODO, payload: todoText});
+    if (todoText !== "") {
+      dispatch({ type: c.ADD_TODO, payload: todoText});
+      setTodoText("");
+    }
   }
 
   return (
-    <div className="container">
+    <div className="notepad">
       <div className="form">
         <input
           className="todo-name"
@@ -26,31 +29,29 @@ const TodoList = () => {
           onChange={handleChanges}
         />
         <button
+          className="add"
           type="button"
-          onClick={saveTodo}>Save Todo
-        </button>
-        <button onClick={() => dispatch({type: c.CLEAR_COMPLETED})}>
-          Clear Completed
-        </button>
-        <button onClick={() => dispatch({type: c.ADD_TODO, payload: 'Sleep'})}>
-          Sleep
+          onClick={saveTodo}
+          aria-label="Save"
+        >+
         </button>
       </div> {/* form */} 
-      <div>
-        <h2>Your Todo Items</h2>
+      <div className="items">
         {todoState.map(todo => ( 
-          <div className={`${todo.completed ? 'completed' : ''}`}
-            onClick={() => dispatch({type: c.TOGGLE_COMPLETE, payload: todo.id})}
+          <div className={`item ${todo.completed ? 'completed' : ''}`}
+            key={todo.id} onClick={() => dispatch({type: c.TOGGLE_COMPLETE, payload: todo.id})}
           >
-            {todo.item}
+            <span className="check">X</span>
+            <span className="text">{todo.item}</span>
           </div> ))
         }
-      </div>
+      </div> {/* items */}
+      <button className="clear" onClick={() => dispatch({type: c.CLEAR_COMPLETED})}>
+          Clear Completed
+      </button>
     </div> // container
   );
 
 }
-
-
 
 export default TodoList;
